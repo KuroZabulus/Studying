@@ -1,19 +1,19 @@
 #include<stdio.h>
 
-void Swap2Num(float a, float b)
+void Swap2Num(int a, int b)
 {
 	a=a+b;
 	b=a-b; //b=a+b-b=a
 	a=a-b; //a=a+b-a=b
-	printf("\nAfter swap: %.2f %.2f",a,b);
+	printf("\nAfter swap: %d %d",a,b);
 }
 
 int main()
 {
-	float a,b;
+	int a,b;
 	printf("Input two numbers: ");
-	scanf("%f %f",&a,&b);
-	printf("Before: %.2f %.2f",a,b);
+	scanf("%d %d",&a,&b);
+	printf("Before: %d %d",a,b);
 	Swap2Num(a,b);
 	getchar();
 	return 0;
