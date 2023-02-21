@@ -1,6 +1,6 @@
 #include<stdio.h>
-#include<stdlib.h>
-#include"function.cpp"
+#include<stdlib.h> //call for header file in the system directory
+#include"function.cpp" //call for file in the same directory of this program
 
 int main()
 {

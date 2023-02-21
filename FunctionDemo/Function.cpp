@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<math.h>
+#include<stdlib.h>
 
 int PrimeCheck(long n) //take number n to check
 {
