@@ -18,7 +18,7 @@ int PrimeCheck(long n) //take number n to check
 int main()
 {
 	int flag,n,count=1;
-	long i=2;
+	char i=2;
 	printf("Input number of primes: ");
 	scanf("%d",&n); //recieve number of primes needed to be print
 	do
