@@ -7,9 +7,9 @@ int main()
 	int a,b;
 	printf("Input two numbers: ");
 	scanf("%d %d",&a,&b);
-	printf("Before: %d %d",a,b);
+	printf("\nBefore: %d %d",a,b);
 	Swap2Num(&a,&b); //pass address and value in addr into function
-	printf("\nAfter swap: %d %d",a,b);
+	printf("\nAfter : %d %d",a,b);
 	getchar();
 	return 0;
 }
