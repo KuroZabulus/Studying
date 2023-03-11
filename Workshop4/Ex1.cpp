@@ -9,6 +9,8 @@ int main()
 	scanf("%d %d",&a,&b);
 	printf("\nBefore: %d %d",a,b);
 	Swap2Num(&a,&b); //pass address and value in addr into function
+	//this is call by reference method (to pass address into func)
+	//call by value is passing value into func, but doesn't actually change the var
 	printf("\nAfter : %d %d",a,b);
 	getchar();
 	return 0;
