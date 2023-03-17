@@ -166,7 +166,7 @@ int countEven(int *pa, int size) //
 
 void printArrayAsc(int *pEvArr, int i)
 {
-		printf("a[%d]=%d\n",i,pEvArr[i]);
+		printf("sortedEven[%d]=%d\n",i,pEvArr[i]);
 }
 
 void swapAsc (int *pEvArr, int i)
@@ -188,6 +188,7 @@ void sortEvenElemAsc(int *pa, int size)
 	int *pEvArr, sizeEvArr, count=0;
 	sizeEvArr=countEven(pa,size);
 	pEvArr=(int*)calloc(sizeEvArr,sizeof(int));
+	printf("Even numbers in array: ");
 	for (int i=0;i<size;i++)
 	{
 		if(pa[i]%2==0)
@@ -197,6 +198,7 @@ void sortEvenElemAsc(int *pa, int size)
 			count++;
 		}
 	}
+	printf("\nSorting even elements in array...");
 	for(int j=0; j<count-1; ++j)
 	{
 		for(int i=count-1;i>j;i--)
@@ -217,7 +219,7 @@ void sortEvenElemAsc(int *pa, int size)
 
 void printArrayDesc(int *pArrDesc, int i)
 {
-		printf("a[%d]=%d\n",i,pArrDesc[i]);
+		printf("sortedDesc[%d]=%d\n",i,pArrDesc[i]);
 }
 
 int swapDesc (int *pArrDesc, int i)
