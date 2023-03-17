@@ -37,13 +37,13 @@ void Search2Max(int arr[])
 	int Max2=0;
 	for (int i=0;i<n;++i)
 	{
-		if (arr[i]>Max1) {Max1=arr[i]; printf("\nMax1=%d",Max1);}
+		if (arr[i]>Max1) Max1=arr[i]; //printf("\nMax1=%d",Max1);
 	}
 	for (int i=0;i<n;++i)
 	{
 		if (arr[i]>Max2&&arr[i]<Max1) 
 		{
-			if (arr[i]!=Max1) {Max2=arr[i]; printf("\nMax2=%d",Max2);}
+			if (arr[i]!=Max1) Max2=arr[i]; //printf("\nMax2=%d",Max2);
 		}
 	}
 	printf("Largest number: %d",Max1);

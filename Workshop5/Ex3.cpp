@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
+#include<conio.h>
 
 int getUserChoice();
 //int* allocArr(int *pa);
@@ -28,11 +29,26 @@ int main()
 		switch(userChoice)
 		{
 			case 1: /*pa=allocArr(pa);*/
-							inputArr(pa,size); break;
-			case 2: searchArray(pa,size); break;
-			case 3: printPrime(pa,size); break;
-			case 4: sortEvenElemAsc(pa,size); break;
-			case 5: sortDescArray(pa,size); break;
+							printf("-------Option 1: Input element--------\n");
+							inputArr(pa,size); 
+							printf("\n--------------------------------------\n");
+							getchar(); getchar(); system("cls"); break;
+			case 2: printf("-------Option 2: Search element--------\n");
+							searchArray(pa,size); 
+							printf("\n---------------------------------------\n");
+							getchar(); getchar(); system("cls"); break;
+			case 3: printf("-------Option 3: Print prime in array--------\n");
+							printPrime(pa,size); 
+							printf("\n---------------------------------------------\n");
+							getchar(); system("cls"); break;
+			case 4: printf("-------Option 4: Sort even element in ascending order--------\n");
+							sortEvenElemAsc(pa,size); 
+							printf("\n-------------------------------------------------------------\n");
+							getchar(); system("cls"); break;
+			case 5: printf("-------Option 5: Sort array in descending order--------\n");
+							sortDescArray(pa,size); 
+							printf("\n-------------------------------------------------------\n");
+							getchar(); system("cls"); break;
 			default: printf("Bye!\n");
 		}
 	}
@@ -43,10 +59,10 @@ int main()
 	return 0;
 }
 
-/*int* allocArr(int *pa)
+/*int* allocArr(int *pa) //doesn't actually work (error: Segmentation Fault)
 {
 	int size;
-	printf("Array size: ");
+	printf("Array size: ");										
 	scanf("%d",&size);
 	pa = (int*) calloc (size,sizeof(int));
 	for(int i=0;i<size;i++)
@@ -55,7 +71,8 @@ int main()
 	}
 	printf("Addr & value of a[0]: %u & %d\n",&pa[0],pa[0]);
 	return pa;
-}*/
+}*/ 
+
 
 int getUserChoice() //get user choice for menu
 {
@@ -84,6 +101,7 @@ void inputArr(int *pa, int size) //input value into array element
 		printf("\na[%d]=",i);
 		scanf("%d",&pa[i]);
 	}
+	printf("\nEnd of function...");
 }
 
 void searchArray(int *pa, int size) //search for a specified value in array
@@ -100,9 +118,10 @@ void searchArray(int *pa, int size) //search for a specified value in array
 		}
 	}
 	if (Count==0) printf("No matching element found!\n");
+	printf("\nEnd of function...");
 }
 
-int checkPrime(int n) //take number n to check
+int checkPrime(int n) //take number n to check for prime
 {
 	int flag=1,Divrs; //default flag=yesPrime
 	for (Divrs=2; Divrs<=sqrt(n);Divrs++) //divisor starts at 2, less than sqrt(n)
@@ -116,10 +135,11 @@ int checkPrime(int n) //take number n to check
 	return flag;
 }
 
-void printPrime(int *pa, int size) 
+void printPrime(int *pa, int size) //print prime number (rely on funct checkPrime)
 {
 	int n;
-	int flag;
+	int flag, count=0;
+	printf("Prime number in the array:\n");
 	for (int i=0;i<size;i++) //set current number to start at lolim, end at hilim
 	{
 		n=pa[i];
@@ -127,11 +147,14 @@ void printPrime(int *pa, int size)
 		if(flag==1) //if number is prime, print number
 		{
 			printf("a[%d]=%d\n",i,pa[i]);
+			count++;
 		}
 	} //else, nothing happens, and number increase to the next
+	if (count==0) printf("There is no prime number in the array!\n");
+	printf("\nEnd of function...");
 }
 
-int countEven(int *pa, int size)
+int countEven(int *pa, int size) //
 {
 	int Count=0;
 	for(int i=0;i<size;i++)
@@ -149,13 +172,15 @@ void printArrayAsc(int *pEvArr, int i)
 void swapAsc (int *pEvArr, int i)
 {
 	int temp=0;
-	if(pEvArr[i]>pEvArr[i+1]) 
+	//printf("\nBefore swap: %d - %d + %d",pEvArr[i],pEvArr[i-1],temp);
+	if(pEvArr[i]<pEvArr[i-1]) 
 	{
 		temp=pEvArr[i]; 
-		pEvArr[i]=pEvArr[i+1];
-		pEvArr[i+1]=temp;
+		pEvArr[i]=pEvArr[i-1];
+		pEvArr[i-1]=temp;
 		temp=0; 
 	}
+	//printf("\nAfter swap: %d - %d + %d",pEvArr[i],pEvArr[i-1],temp);
 }
 
 void sortEvenElemAsc(int *pa, int size)
@@ -172,11 +197,12 @@ void sortEvenElemAsc(int *pa, int size)
 			count++;
 		}
 	}
-	for(int j=0; j<size-1; ++j)
+	for(int j=0; j<count-1; ++j)
 	{
-		for(int i=0;i<size-j-1;++i)
+		for(int i=count-1;i>j;i--)
 		{
-		swapAsc(pEvArr,i);
+			//printf("\nPass %d: %d vs %d: ",j,pEvArr[i],pEvArr[i-1]);
+			swapAsc(pEvArr,i);
 		}
 	}
 	printf("\n");
@@ -184,7 +210,9 @@ void sortEvenElemAsc(int *pa, int size)
 	{
 		printArrayAsc(pEvArr,i);
 	}
+	if (count==0) printf("There is no even number!");
 	free(pEvArr);
+	printf("\nEnd of function...");
 }
 
 void printArrayDesc(int *pArrDesc, int i)
@@ -213,7 +241,7 @@ void sortDescArray(int *pa, int size)
 	{
 		pArrDesc[i]=pa[i];
 	}
-	printf("Sorting array in descending order...\n");
+	printf("Sorting array in descending order...\n"); //bubble sort
 	for(int j=0; j<size-1; ++j) //step to access array elem
 	{
 		for(int i=0;i<size-j-1;++i) //compare elem
@@ -226,5 +254,6 @@ for (int i=0;i<size;i++)
 		printArrayDesc(pArrDesc,i);
 	}
 	free(pArrDesc);
+	printf("\nEnd of function...");
 }
 

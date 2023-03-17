@@ -33,12 +33,16 @@ void InArr(int arr[])
 
 void OutNegArr(int arr[])
 {
+	int count=0;
 	printf("Negative integers in array:\n");
 	for (int i=0;i<n;++i)
 		{	
 			if(arr[i]<0)									
 			{
 				printf("arr[%d] : %d\n",i,arr[i]);
+				count++;
 			}
 		}
+	if (count==0) printf("There's no negative integer in array!");
 }
+
